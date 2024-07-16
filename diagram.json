@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "Luccas Conde",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 178.8,
+      "left": -130.6,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 254.4,
+      "left": -144.55,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 275,
+      "left": 124.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 140.8,
+      "left": 236,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "r1:2", "black", [ "h-148.61", "v153.6", "h28.8" ] ],
+    [ "r1:1", "led1:C", "green", [ "h0" ] ],
+    [ "led1:A", "esp:14", "red", [ "v19.2", "h105.6", "v-105.6" ] ],
+    [ "btn1:1.r", "esp:4", "cyan", [ "v-144", "h-38.2" ] ],
+    [ "esp:GND.1", "btn1:2.l", "blue", [ "h-52.61", "v153.6" ] ],
+    [ "lcd1:SDA", "esp:21", "violet", [ "h-124.8", "v-115" ] ],
+    [ "lcd1:SCL", "esp:22", "violet", [ "h-115.2", "v-153.3" ] ]
+  ],
+  "dependencies": {}
+}
